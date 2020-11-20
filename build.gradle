@@ -1,0 +1,45 @@
+plugins {
+    id 'java'
+    id 'com.github.johnrengelman.shadow' version '6.1.0'
+    id 'application'
+}
+
+group = 'io.github.underscore11code'
+version = '0.1.0-SNAPSHOT'
+mainClassName =  'io.github.underscore11code.logbot.Bootstrap'
+
+repositories {
+    mavenCentral()
+    jcenter()
+    maven { url = 'https://oss.sonatype.org/content/repositories/snapshots' }
+}
+
+dependencies {
+    // JDA - Java Discord API
+    implementation('net.dv8tion:JDA:4.2.0_218')  {
+        exclude module: 'opus-java'
+    }
+    // Guice - Dep Injection
+    implementation 'com.google.inject:guice:4.2.3' 
+    // Logback - SLF4J impl
+    implementation 'ch.qos.logback:logback-classic:1.2.3' 
+    // Caffeine - Caching
+    implementation 'com.github.ben-manes.caffeine:caffeine:2.8.6' 
+    // Lombok - Annotations because I'm lazy
+    compileOnly 'org.projectlombok:lombok:1.18.16' 
+    annotationProcessor 'org.projectlombok:lombok:1.18.16' 
+    testCompileOnly 'org.projectlombok:lombok:1.18.16' 
+    testAnnotationProcessor 'org.projectlombok:lombok:1.18.16'
+    // -- DB stuff --
+    // JDBI - DB interaction
+    implementation 'org.jdbi:jdbi3-core:3.16.0'
+    // Hikari - Connection Pool
+    implementation 'com.zaxxer:HikariCP:3.4.5'
+    // Connector/J - MySQL Driver
+    compile 'mysql:mysql-connector-java:8.0.22'
+
+}
+
+shadowJar{
+    archiveFileName = 'LogBot.jar'
+}
