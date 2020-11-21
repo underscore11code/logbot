@@ -50,6 +50,8 @@ public class CommandHandler extends ListenerAdapter {
                 reply = "**LogBot**\n> " + jda.getSelfUser().getAsMention() + " log\nSet the log channel";
                 break;
         }
-        event.getMessage().getChannel().sendMessage(reply).queue(); // TODO make reply once JDA supports it
+        event.getMessage().getChannel().sendMessage(reply)
+                .reference(event.getMessage())
+                .queue();
     }
 }
