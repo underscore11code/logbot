@@ -16,7 +16,7 @@ repositories {
 
 dependencies {
     // JDA - Java Discord API
-    implementation('net.dv8tion:JDA:4.2.0_218')  {
+    implementation('net.dv8tion:JDA:4.2.0_219')  {
         exclude module: 'opus-java'
     }
     // Guice - Dep Injection
